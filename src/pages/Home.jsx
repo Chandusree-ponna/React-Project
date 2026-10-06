@@ -10,10 +10,7 @@ function Home({
   const [sortBy, setSortBy] = useState("Latest");
   const [searchTerm, setSearchTerm] = useState("");
 
-  /* =========================================================
-      HERO PRODUCTS
-  ========================================================= */
-
+  
   const heroProducts = useMemo(
     () =>
       products.filter((product) =>
@@ -27,9 +24,7 @@ function Home({
   const currentHero =
     heroProducts[heroIndex] || heroProducts[0];
 
-  /* =========================================================
-      FEATURED PRODUCTS
-  ========================================================= */
+  
 
   const featuredProducts = useMemo(
     () =>
@@ -41,9 +36,7 @@ function Home({
 
   const [featuredIndex, setFeaturedIndex] = useState(0);
 
-  /* =========================================================
-      AUTO HERO SLIDE
-  ========================================================= */
+ 
 
   useEffect(() => {
     if (heroProducts.length <= 1) return;
@@ -59,9 +52,7 @@ function Home({
     return () => clearInterval(timer);
   }, [heroProducts.length]);
 
-  /* =========================================================
-      AUTO FEATURED SLIDE
-  ========================================================= */
+
 
   useEffect(() => {
     if (featuredProducts.length <= 1) return;
@@ -176,10 +167,7 @@ function Home({
     0,
     11
   );
-
-  /* =========================================================
-      HELPERS
-  ========================================================= */
+ 
 
   const getDiscount = (product) => {
     if (!product.originalPrice) return 0;
@@ -204,9 +192,7 @@ function Home({
     return "";
   };
 
-  /* =========================================================
-      HERO ARROWS
-  ========================================================= */
+ 
 
   const goToPreviousHero = () => {
     setHeroIndex((current) =>
@@ -224,9 +210,6 @@ function Home({
     );
   };
 
-  /* =========================================================
-      FEATURED ARROWS
-  ========================================================= */
 
   const goToPreviousFeatured = () => {
     setFeaturedIndex((current) =>
@@ -243,10 +226,6 @@ function Home({
         : current + 1
     );
   };
-
-  /* =========================================================
-      FEATURED VISIBLE PRODUCTS
-  ========================================================= */
 
   const visibleFeaturedProducts = [-2, -1, 0, 1, 2].map(
     (offset) => {
@@ -266,9 +245,6 @@ function Home({
   return (
     <main className="bg-[#111111] text-white min-h-screen">
 
-      {/* =====================================================
-          HERO SECTION
-      ===================================================== */}
 
       <section className="relative min-h-[620px] sm:min-h-[680px] lg:min-h-[720px] overflow-hidden bg-[#111111]">
 
@@ -397,10 +373,7 @@ function Home({
       </section>
 
 
-      {/* =====================================================
-          FEATURED PRODUCTS
-      ===================================================== */}
-
+   
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-20">
 
         <h2 className="text-center text-xl sm:text-2xl font-semibold text-gray-300">
@@ -1010,182 +983,141 @@ function Home({
         )}
 
       </section>
+      <section className="border-t border-[#242424] bg-[#111111] py-16">
+  <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
+    <h2 className="text-center text-xl sm:text-2xl font-semibold text-gray-300">
+      Our Advantages
+    </h2>
 
-      {/* =====================================================
-          OUR ADVANTAGES
-      ===================================================== */}
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mt-12">
 
-      <section className="
-        border-t
-        border-[#242424]
-        bg-[#111111]
-        py-20
-      ">
+      <div className="flex items-center gap-4">
 
-        <div className="
-          max-w-7xl
-          mx-auto
-          px-6
-          lg:px-10
-        ">
+        <svg
+          width="38"
+          height="38"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-orange-500 flex-shrink-0"
+        >
+          <path d="M3 7h11v10H3z" />
+          <path d="M14 10h4l3 3v4h-7z" />
+          <circle cx="7" cy="18" r="2" />
+          <circle cx="18" cy="18" r="2" />
+        </svg>
 
-          <h2 className="
-            text-center
-            text-xl
-            sm:text-2xl
-            font-semibold
-            text-gray-300
-          ">
-            Our Advantages
-          </h2>
+        <div>
+          <h3 className="text-xs sm:text-sm font-semibold text-gray-200">
+            Express Delivery
+          </h3>
 
-
-          <div className="
-            grid
-            grid-cols-2
-            lg:grid-cols-4
-            gap-10
-            lg:gap-8
-            mt-14
-          ">
-
-            {/* EXPRESS DELIVERY */}
-
-            <div className="flex items-center gap-4">
-
-              <span className="text-2xl text-red-600">
-                🚚
-              </span>
-
-              <div>
-
-                <h3 className="
-                  text-xs
-                  sm:text-sm
-                  font-semibold
-                  text-gray-200
-                ">
-                  Express Delivery
-                </h3>
-
-                <p className="
-                  text-[10px]
-                  sm:text-xs
-                  text-gray-500
-                  mt-1
-                ">
-                  Ships in 24 hours
-                </p>
-
-              </div>
-
-            </div>
-
-
-            {/* BRAND WARRANTY */}
-
-            <div className="flex items-center gap-4">
-
-              <span className="text-2xl text-red-600">
-                🛡
-              </span>
-
-              <div>
-
-                <h3 className="
-                  text-xs
-                  sm:text-sm
-                  font-semibold
-                  text-gray-200
-                ">
-                  Brand Warranty
-                </h3>
-
-                <p className="
-                  text-[10px]
-                  sm:text-xs
-                  text-gray-500
-                  mt-1
-                ">
-                  100% Original products
-                </p>
-
-              </div>
-
-            </div>
-
-
-            {/* EXCITING DEALS */}
-
-            <div className="flex items-center gap-4">
-
-              <span className="text-2xl text-red-600">
-                🏷
-              </span>
-
-              <div>
-
-                <h3 className="
-                  text-xs
-                  sm:text-sm
-                  font-semibold
-                  text-gray-200
-                ">
-                  Exciting Deals
-                </h3>
-
-                <p className="
-                  text-[10px]
-                  sm:text-xs
-                  text-gray-500
-                  mt-1
-                ">
-                  On all prepaid orders
-                </p>
-
-              </div>
-
-            </div>
-
-
-            {/* SECURE PAYMENTS */}
-
-            <div className="flex items-center gap-4">
-
-              <span className="text-2xl text-red-600">
-                💳
-              </span>
-
-              <div>
-
-                <h3 className="
-                  text-xs
-                  sm:text-sm
-                  font-semibold
-                  text-gray-200
-                ">
-                  Secure Payments
-                </h3>
-
-                <p className="
-                  text-[10px]
-                  sm:text-xs
-                  text-gray-500
-                  mt-1
-                ">
-                  SSL / Secure payments
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
+          <p className="text-[10px] sm:text-xs text-gray-500 mt-1">
+            Ships in 24 Hours
+          </p>
         </div>
 
-      </section>
+      </div>
+
+      <div className="flex items-center gap-4">
+
+        <svg
+          width="38"
+          height="38"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-orange-500 flex-shrink-0"
+        >
+          <path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z" />
+          <path d="m9 12 2 2 4-5" />
+        </svg>
+
+        <div>
+          <h3 className="text-xs sm:text-sm font-semibold text-gray-200">
+            Brand Warranty
+          </h3>
+
+          <p className="text-[10px] sm:text-xs text-gray-500 mt-1">
+            100% Original products
+          </p>
+        </div>
+
+      </div>
+
+      <div className="flex items-center gap-4">
+
+        <svg
+          width="38"
+          height="38"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-orange-500 flex-shrink-0"
+        >
+          <path d="M3 7h18l-2 11H5z" />
+          <path d="M3 7l3-4h12l3 4" />
+          <path d="M8 11h8" />
+        </svg>
+
+        <div>
+          <h3 className="text-xs sm:text-sm font-semibold text-gray-200">
+            Exciting Deals
+          </h3>
+
+          <p className="text-[10px] sm:text-xs text-gray-500 mt-1">
+            On all prepaid orders
+          </p>
+        </div>
+
+      </div>
+
+      <div className="flex items-center gap-4">
+
+        <svg
+          width="38"
+          height="38"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-orange-500 flex-shrink-0"
+        >
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="M3 10h18" />
+          <path d="M7 15h4" />
+        </svg>
+
+        <div>
+          <h3 className="text-xs sm:text-sm font-semibold text-gray-200">
+            Secure Payments
+          </h3>
+
+          <p className="text-[10px] sm:text-xs text-gray-500 mt-1">
+            SSL / Secure certificate
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+      
 
     </main>
   );
